@@ -1,0 +1,94 @@
+/* Ensure full height for html and body */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Set body as a flex container arranged in a column */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content container grows to fill available space */
+.content {
+    padding: 60px 0;
+    flex: 1;
+}
+
+/* Existing styles */
+.hero-section {
+    padding: 100px 0;
+    background: linear-gradient(to right, #2c3e50, #3498db);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-icon {
+    font-size: 8rem;
+    opacity: 0.1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card i {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover i {
+    transform: scale(1.2);
+    color: #fff;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+.alert {
+    border-radius: 10px;
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 12px 24px;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.list-group-item {
+    border-radius: 8px !important;
+    margin-bottom: 8px;
+}
+
+.shadow {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Footer styles to always stick to the bottom */
+footer {
+    margin-top: auto;
+    width: 100%;
+}

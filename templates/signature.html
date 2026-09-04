@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0"><i class="fas fa-signature"></i> Signature Authentication</h4>
+            </div>
+            <div class="card-body">
+                {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+
+                <form method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload signature image:</label>
+                        <input class="form-control" type="file" name="image" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-search"></i> Analyze Signature
+                    </button>
+                </form>
+
+                {% if result %}
+                <div class="result-section mt-4">
+                    <h5 class="mt-4">Analysis Result</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <img src="{{ img_path }}" class="card-img-top" alt="Uploaded Signature">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div
+                                class="alert {% if result == 'Genuine' %}alert-success{% else %}alert-danger{% endif %}">
+                                <h4><i
+                                        class="fas fa-{% if result == 'Genuine' %}check{% else %}times{% endif %}-circle"></i>
+                                    {{ result }} Signature
+                                </h4>
+                                <p class="mb-0">AI Confidence: {{ Confidence }}</p>
+                            </div>
+                            <div class="signature-details">
+                                <h6>Analysis Details:</h6>
+                                <ul class="list-group">
+                                    {% if result == 'Genuine' %}
+                                    <li class="list-group-item">
+                                        Stroke Consistency: 96% Match
+                                    </li>
+                                    <li class="list-group-item">
+                                        Pressure Pattern: Authentic
+                                    </li>
+                                    <li class="list-group-item">
+                                        Speed Variation: Natural
+                                    </li>
+                                    {% else %}
+                                    <li class="list-group-item">
+                                        Stroke Consistency: 58% Match ❌
+                                    </li>
+                                    <li class="list-group-item">
+                                        Pressure Pattern: Inconsistent ❌
+                                    </li>
+                                    <li class="list-group-item">
+                                        Speed Variation: Irregular, robotic ❌
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
